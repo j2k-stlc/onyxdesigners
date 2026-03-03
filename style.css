@@ -1,0 +1,50 @@
+:root { --black: #000; --gray: #111; --accent: #fff; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+body { background: var(--black); color: white; overflow-x: hidden; width: 100%; }
+
+/* Navbar */
+.navbar { display: flex; justify-content: space-between; padding: 20px 5%; background: rgba(0,0,0,0.9); position: fixed; width: 100%; z-index: 100; border-bottom: 1px solid #222; }
+.logo span { color: #555; }
+.nav-links { display: flex; list-style: none; }
+.nav-links a { color: white; text-decoration: none; margin-left: 25px; font-size: 0.9rem; }
+
+/* Hamburger Menu */
+.hamburger { display: none; cursor: pointer; }
+.hamburger span { display: block; width: 25px; height: 3px; background: white; margin: 5px; transition: 0.3s; }
+
+/* Full Slider */
+.hero-slider { height: 100vh; position: relative; overflow: hidden; background:#00F; }
+.slide { position: absolute; inset: 0; background-size: cover; background-position:center center; opacity: 0; transition: opacity 1s ease; }
+.slide.active { opacity: 1; }
+.hero-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 90%; }
+.hero-overlay h1 { font-size: 3.5rem; letter-spacing: 5px ;color: #FFF border-bottom-color:#F00; border-width:100000px;  }
+
+/* Grid Logic */
+.section { padding: 80px 5%; text-align: center; }
+.dark-bg { background: var(--gray); }
+.responsive-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-top: 30px; }
+.img-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 4px; }
+.circle img { border-radius: 50%; aspect-ratio: 1/1; }
+
+/* Contact */
+.contact-container { display: flex; justify-content: center; gap: 20px; margin-top: 30px; }
+.contact-box { background: #1a1a1a; padding: 30px; flex: 1; max-width: 400px; border: 1px solid #333; }
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .hamburger { display: block; }
+    .nav-links { 
+        position: fixed; right: -100%; top: 70px; height: 100vh; width: 100%; 
+        background: #000; flex-direction: column; transition: 0.4s; padding-top: 50px;
+    }
+    .nav-links.active { right: 0; }
+    .nav-links a { margin: 20px 0; font-size: 1.5rem; }
+
+    .hero-slider { height: 60vh; } /* Prevents cutting the height too aggressively */
+    .hero-overlay h1 { font-size: 2rem; }
+
+    /* Single Column Stack */
+    .responsive-grid { grid-template-columns: 1fr; }
+    .img-wrapper { height: 400px; } /* Set a generous height for mobile visibility */
+    .contact-container { flex-direction: column; }
+}
